@@ -39,6 +39,25 @@ npm run build
 
 تغييرات SEO من الأدمن معاينة محلية؛ HTML المنشور يحمل القيم الافتراضية. التطبيق `noindex` افتراضيًا لأنه يستخدم بيانات توضيحية. فتح رابط خارجي يسجل الفتح فقط ولا يثبت الحضور أو بدء البث.
 
+معاينة الموبايل واجهة ويب متجاوبة؛ هذه النسخة لا تتضمن APK أو تطبيق iOS موقّعًا.
+
+## الخدمات المقترحة للإنتاج
+
+هذا اقتراح للتنفيذ اللاحق؛ الخدمات التالية غير مربوطة بالبروتوتايب الحالي.
+
+| الجزء | الاقتراح |
+|---|---|
+| البيانات والمستخدمون والصلاحيات | Supabase PostgreSQL وAuth؛ موافقة الأدمن وحالة العضوية وقيود الاشتراك تُفرض في قاعدة البيانات والخادم |
+| OTP عبر SMS | مزود مثل Taqnyat متصل بـSupabase Send SMS Hook |
+| التعليقات والدردشة | Supabase Realtime مع حفظ الرسائل في جداول التطبيق وقنوات خاصة بحسب الصلاحيات |
+| الوصولات والمرفقات | Supabase Storage خاص؛ وصول المنتسب إلى ملفاته، والإدارة إلى ملفات التحقق |
+| دورات الرسوم الشهرية | pg_cron وEdge Functions لإنشاء الاستحقاقات والتذكيرات، مع سجل قبول ورفض يدوي |
+| Android وiOS | Capacitor لتغليف واجهة الويب، مع FCM وAPNs للإشعارات، والتوقيع وحسابات المتاجر |
+| البث الخارجي | YouTube Live أو منصة يختارها العميل؛ تأكيد المشرف لحدوث اللقاء، أو تكامل API للتحقق من حالة البث |
+| استضافة الويب | GitHub Pages للعرض التجريبي؛ عند الإنتاج تُستضاف الواجهة ويُربط Backend مركزي |
+
+مصادر التنفيذ الرسمية: [SMS Hook](https://supabase.com/docs/guides/auth/auth-hooks/send-sms-hook)، [Taqnyat](https://dev.taqnyat.sa/en/doc/sms/)، [Realtime](https://supabase.com/docs/guides/realtime/authorization)، [Storage](https://supabase.com/docs/guides/storage/security/access-control)، [الجدولة](https://supabase.com/docs/guides/functions/schedule-functions)، [Capacitor](https://capacitorjs.com/docs)، [Push](https://capacitorjs.com/docs/apis/push-notifications)، [YouTube Live API](https://developers.google.com/youtube/v3/live/docs/liveBroadcasts).
+
 ## التحقق
 
 تم فحص TypeScript والبناء، وحفظ إعدادات الاسم والرئيسية وSEO والأخبار والألوان، والنشر في قسمين بنفس التعليقات، وفلاتر المجالس، والنص الغني للمواضيع والصفحات، وواجهة الموبايل. مسارات العضوية والإشراف والرسوم والدردشة والبث متاحة للتجربة من الشخصيات المختلفة.
